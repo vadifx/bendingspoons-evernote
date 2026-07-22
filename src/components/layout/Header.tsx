@@ -19,7 +19,7 @@ export default function Header() {
           <Button variant="outline" size="md" href="#">
             Download
           </Button>
-          <Button variant="primary" size="md" href="#upgrade">
+          <Button variant="primary" size="md" upgrade>
             Continue without limits
           </Button>
         </div>
@@ -31,7 +31,7 @@ export default function Header() {
           >
             Log in
           </a>
-          <Button variant="primary" size="sm" href="#upgrade">
+          <Button variant="primary" size="sm" upgrade>
             Upgrade
           </Button>
         </div>

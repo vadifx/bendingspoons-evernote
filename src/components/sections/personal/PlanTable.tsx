@@ -121,7 +121,7 @@ export default function PlanTable() {
           <div className="p-5" />
           <div className="border-l border-stroke-cards p-5 text-center">
             <p className="text-[15px] font-semibold">Free</p>
-            <p className="mt-2 text-[22px] font-semibold">Free</p>
+            <p className="mt-2 text-[22px] font-semibold">€0.00/mo</p>
           </div>
           <div className="relative border-l border-stroke-cards bg-[#F0FDF4]/15 p-5 text-center">
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-pill bg-brand-green px-3 py-0.5 text-[11px] font-semibold text-white">
@@ -161,7 +161,7 @@ export default function PlanTable() {
             <Button
               variant="green"
               size="md"
-              href="#"
+              upgrade
               className="w-full max-w-[200px]"
             >
               Unlock everything
@@ -176,7 +176,7 @@ export default function PlanTable() {
           [
             {
               name: "Free",
-              price: "Free",
+              price: "€0.00/mo",
               highlight: false,
               key: "free" as const,
             },
@@ -216,7 +216,7 @@ export default function PlanTable() {
             </ul>
             {plan.highlight && (
               <div className="mt-5">
-                <Button variant="green" size="md" href="#" className="w-full">
+                <Button variant="green" size="md" upgrade className="w-full">
                   Unlock everything
                 </Button>
               </div>

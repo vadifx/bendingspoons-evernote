@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 export default function PersonalHero() {
   return (
     <section className="px-2 pt-2 md:px-3">
-      <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-panel bg-bg-secondary px-5 pb-44 pt-12 md:rounded-panel-lg md:px-10 md:pb-52 md:pt-16 lg:min-h-[560px] lg:px-16 lg:pb-24 lg:pt-24">
+      <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-panel bg-bg-secondary px-5 pb-[calc(11rem+25px)] pt-12 md:rounded-panel-lg md:px-10 md:pb-52 md:pt-16 lg:min-h-[560px] lg:px-16 lg:pb-24 lg:pt-24">
         <div className="relative z-10 max-w-[540px] animate-fade-up text-left">
           <p className="text-[14px] font-medium text-brand-green">
             Evernote Personal
@@ -20,7 +20,7 @@ export default function PersonalHero() {
           </p>
 
           <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Button variant="primary" size="lg" href="#upgrade">
+            <Button variant="primary" size="lg" upgrade>
               Continue without limits
             </Button>
             <a
@@ -31,7 +31,7 @@ export default function PersonalHero() {
             </a>
           </div>
 
-          <p className="mt-5 text-[13px] text-text-muted">
+          <p className="mt-5 hidden text-[13px] text-text-muted lg:block">
             Trusted by 250 million users worldwide
           </p>
         </div>

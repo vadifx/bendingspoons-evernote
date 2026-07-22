@@ -39,8 +39,8 @@ export default function AiSearchSection() {
         className="pointer-events-none absolute -bottom-40 -left-44 hidden size-[24rem] rotate-12 text-brand-lime opacity-[0.14] lg:block"
       />
 
-      <div className="relative mx-auto grid max-w-[1180px] items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
-        <div className="max-w-[480px]">
+      <div className="relative mx-auto grid max-w-[1180px] items-center gap-12 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div className="max-w-[480px] px-8 sm:px-10 lg:px-0">
           <p className="flex items-center gap-2 text-[14px] font-medium text-brand-lime">
             <SparkleIcon className="size-3.5" /> AI features
           </p>
@@ -78,7 +78,7 @@ export default function AiSearchSection() {
           </ul>
 
           <div className="mt-8">
-            <Button variant="lime" size="md" href="#upgrade" className="px-8 py-3">
+            <Button variant="lime" size="md" upgrade className="px-8 py-3">
               Unlock AI search
             </Button>
           </div>
@@ -87,7 +87,7 @@ export default function AiSearchSection() {
           </p>
         </div>
 
-        <div className="min-w-0">
+        <div className="min-w-0 px-5 lg:px-0">
           <SearchVisual />
         </div>
       </div>

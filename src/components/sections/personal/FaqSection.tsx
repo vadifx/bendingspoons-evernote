@@ -26,7 +26,7 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="px-5 py-12 md:py-20">
+    <section className="px-[25px] py-12 md:py-20">
       <div className="mx-auto max-w-[1000px]">
         <h2 className="heading-3 text-center text-balance">Questions</h2>
         <p className="mx-auto mt-4 max-w-[440px] text-center text-[16px] text-text-secondary">

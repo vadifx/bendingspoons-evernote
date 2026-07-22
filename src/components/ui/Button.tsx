@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { useEasterEgg } from "@/components/ui/EasterEgg";
 
 type Variant = "primary" | "outline" | "ghost" | "lime" | "green";
 type Size = "sm" | "md" | "lg";
@@ -28,6 +31,8 @@ type ButtonProps = {
   href?: string;
   className?: string;
   fullWidthMobile?: boolean;
+  /** Opens the recruiter easter-egg panel */
+  upgrade?: boolean;
 };
 
 export default function Button({
@@ -37,7 +42,10 @@ export default function Button({
   href,
   className = "",
   fullWidthMobile = false,
+  upgrade = false,
 }: ButtonProps) {
+  const { open } = useEasterEgg();
+
   const cls = [
     base,
     variants[variant],
@@ -48,6 +56,14 @@ export default function Button({
     .filter(Boolean)
     .join(" ");
 
+  if (upgrade) {
+    return (
+      <button type="button" className={cls} onClick={open}>
+        {children}
+      </button>
+    );
+  }
+
   if (href !== undefined) {
     return (
       <a href={href} className={cls}>
@@ -55,5 +71,5 @@ export default function Button({
       </a>
     );
   }
-  return <button className={cls}>{children}</button>;
+  return <button type="button" className={cls}>{children}</button>;
 }

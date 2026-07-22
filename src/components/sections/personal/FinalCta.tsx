@@ -27,7 +27,12 @@ export default function FinalCta() {
             saving without interruptions. Only €7.99/month.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button variant="primary" size="lg" href="#upgrade" fullWidthMobile>
+            <Button
+              variant="primary"
+              size="lg"
+              upgrade
+              fullWidthMobile
+            >
               Continue without limits
             </Button>
             <a
@@ -37,7 +42,7 @@ export default function FinalCta() {
               Stay on Free
             </a>
           </div>
-          <p className="mt-5 text-[13px] text-text-muted">
+          <p className="mt-5 hidden text-[13px] text-text-muted lg:block">
             Trusted by 250 million users worldwide
           </p>
         </div>

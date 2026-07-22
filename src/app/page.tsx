@@ -8,6 +8,7 @@ import BeforeAfter from "@/components/sections/personal/BeforeAfter";
 import PlanTable from "@/components/sections/personal/PlanTable";
 import FaqSection from "@/components/sections/personal/FaqSection";
 import FinalCta from "@/components/sections/personal/FinalCta";
+import { EasterEggProvider } from "@/components/ui/EasterEgg";
 
 export const metadata: Metadata = {
   title: "Evernote Personal: Your second brain, without limits",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <EasterEggProvider>
       <Header />
       <main className="flex-1 pt-[81px]">
         <PersonalHero />
@@ -29,6 +30,6 @@ export default function Home() {
         <FinalCta />
       </main>
       <Footer />
-    </>
+    </EasterEggProvider>
   );
 }
