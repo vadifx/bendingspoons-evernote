@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type Variant = "primary" | "outline" | "ghost" | "lime";
+type Variant = "primary" | "outline" | "ghost" | "lime" | "green";
 type Size = "sm" | "md" | "lg";
 
 const base =
@@ -12,6 +12,7 @@ const variants: Record<Variant, string> = {
     "border border-stroke-buttons bg-transparent text-text-primary hover:border-bg-inverse hover:bg-bg-inverse hover:text-white",
   ghost: "text-text-primary hover:opacity-70",
   lime: "bg-brand-lime text-text-primary hover:bg-brand-green hover:text-white",
+  green: "bg-brand-green text-white hover:bg-bg-inverse",
 };
 
 const sizes: Record<Size, string> = {

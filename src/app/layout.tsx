@@ -14,9 +14,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "La migliore app per prendere appunti - Organizza le tue note con Evernote",
+  title: "Evernote Personal: Your second brain, without limits",
   description:
-    "Ricorda tutto e affronta qualsiasi progetto con appunti, attività e calendario, tutto in un unico posto.",
+    "Unlock every device, offline access, AI-powered search, and 100 GB of monthly uploads with Evernote Personal for €7.99/month.",
 };
 
 export default function RootLayout({

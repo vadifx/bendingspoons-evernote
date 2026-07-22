@@ -1,24 +1,29 @@
+import type { ReactNode } from "react";
 import {
   NotebookFlat,
   SearchFlat,
   PhoneIcon,
 } from "@/components/ui/icons";
 
-const benefits = [
+const benefits: {
+  icon: ReactNode;
+  title: string;
+  body: string;
+}[] = [
   {
     icon: <PhoneIcon className="size-10" />,
     title: "Work from anywhere",
-    body: "Open notes offline on the train, in a meeting, or in the air — even with no signal.",
+    body: "Open notes offline on the train, in a meeting, or in the air, even with no signal.",
   },
   {
     icon: <SearchFlat className="size-11" />,
     title: "Find any note in seconds",
-    body: "AI-powered search surfaces the right note among years of notes — even if you only remember a detail.",
+    body: "AI-powered search surfaces the right note among years of notes, even if you only remember a detail.",
   },
   {
     icon: <NotebookFlat className="size-11" />,
     title: "Save without stopping",
-    body: "100 GB upload every month and notes up to 200 MB — room for PDFs, scans, and long recordings.",
+    body: "100 GB upload every month and notes up to 200 MB, with room for PDFs, scans, and long recordings.",
   },
 ];
 
@@ -28,7 +33,7 @@ export default function BenefitCards() {
       <div className="mx-auto max-w-[720px] text-center">
         <h2 className="heading-3 text-balance">What actually changes</h2>
         <p className="mx-auto mt-4 max-w-[480px] text-[16px] leading-[1.55] text-text-secondary">
-          Three upgrades that remove the friction you feel every day — not a
+          Three upgrades that remove the friction you feel every day, not a
           laundry list of specs.
         </p>
       </div>
@@ -37,7 +42,7 @@ export default function BenefitCards() {
         {benefits.map((b, i) => (
           <article
             key={b.title}
-            className="group flex flex-col rounded-card bg-white p-8 shadow-showcase transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_12px_32px_-8px_rgba(0,0,21,0.16),0_0_0_1px_rgba(0,0,21,0.08)]"
+            className="group flex flex-col rounded-card bg-bg-secondary p-8 shadow-showcase transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_12px_32px_-8px_rgba(0,0,21,0.16),0_0_0_1px_rgba(0,0,21,0.08)]"
             style={{ animationDelay: `${120 + i * 80}ms` }}
           >
             <div className="transition-transform duration-300 group-hover:scale-105">
@@ -55,7 +60,7 @@ export default function BenefitCards() {
 
       <p className="mx-auto mt-8 max-w-[520px] text-center text-[14px] text-text-muted">
         Plus unlimited synced devices, full tasks & reminders, and PDF
-        annotation — all included in Personal.
+        annotation, all included in Personal.
       </p>
     </section>
   );

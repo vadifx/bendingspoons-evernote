@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import {
   SearchIcon,
@@ -7,16 +8,43 @@ import {
 
 function Highlight({ children }: { children: string }) {
   return (
-    <mark className="rounded-[3px] bg-accent-yellow/60 px-0.5 text-inherit">
+    <mark className="rounded-[3px] bg-accent-yellow px-0.5 text-text-primary">
       {children}
     </mark>
   );
 }
 
+/** Clean QR mark for the decorative ticket */
+function QrMark({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 21 21"
+      className={className}
+      aria-hidden
+      shapeRendering="crispEdges"
+    >
+      {/* Finder: top-left */}
+      <path fill="#141414" d="M0 0h9v9H0zm2 2h5v5H2z" />
+      <path fill="#141414" d="M3 3h3v3H3z" />
+      {/* Finder: top-right */}
+      <path fill="#141414" d="M12 0h9v9h-9zm2 2h5v5h-5z" />
+      <path fill="#141414" d="M15 3h3v3h-3z" />
+      {/* Finder: bottom-left */}
+      <path fill="#141414" d="M0 12h9v9H0zm2 2h5v5H2z" />
+      <path fill="#141414" d="M3 15h3v3H3z" />
+      {/* Timing / data modules */}
+      <path
+        fill="#141414"
+        d="M10 0h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm0 2h1v1h-1zm2 1h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1zm-2 0h1v1h-1zm2-2h1v1h-1zm-4 0h1v1h-1zm2-2h1v1h-1zm2 0h1v1h-1zm-2-2h1v1h-1zm-2 0h1v1h-1zm4 0h1v1h-1zm-2 4h1v1h-1zm2 2h1v1h-1zm0 2h1v1h-1z"
+      />
+    </svg>
+  );
+}
+
 const results: {
   category: string;
-  title: React.ReactNode;
-  snippet: React.ReactNode;
+  title: ReactNode;
+  snippet: ReactNode;
   thumb?: string;
   alt?: string;
 }[] = [
@@ -79,65 +107,59 @@ const results: {
 
 export default function SearchVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-[480px] py-4">
-      {/* Toggle Offline */}
-      <div className="absolute right-[16%] top-0 z-20 flex items-center gap-1.5 rounded-pill bg-white px-2 py-1 shadow-showcase">
-        <span className="relative inline-flex h-4 w-7 items-center rounded-pill bg-accent-blue">
-          <span className="absolute right-0.5 size-3 rounded-full bg-white" />
-        </span>
-        <span className="text-[11px] font-medium">Offline</span>
-      </div>
+    <div className="relative mx-auto w-full py-2 text-text-primary lg:max-w-[480px]">
+      {/* Column shares one width: search bar + result cards.
+          Full width until the section splits into two columns (lg). */}
+      <div className="relative z-10 w-full space-y-3 lg:w-[78%]">
+        <div className="flex h-12 w-full items-center gap-2.5 rounded-pill bg-white px-4 text-text-primary shadow-showcase">
+          <SearchIcon className="size-4 shrink-0 text-text-tertiary" />
+          <span className="text-[14px] font-medium text-text-primary">
+            Lisbon
+            <span className="animate-caret ml-px inline-block h-4 w-px translate-y-[3px] bg-text-primary" />
+          </span>
+          <CloseIcon className="ml-auto size-3 shrink-0 text-text-muted" />
+        </div>
 
-      {/* Barra di ricerca */}
-      <div className="relative z-10 mt-5 flex h-12 w-[76%] items-center gap-2.5 rounded-pill bg-white px-4 shadow-showcase">
-        <SearchIcon className="size-4 shrink-0 text-text-tertiary" />
-        <span className="text-[14px] font-medium">
-          Lisbon
-          <span className="animate-caret ml-px inline-block h-4 w-px translate-y-[3px] bg-text-primary" />
-        </span>
-        <CloseIcon className="ml-auto size-3 shrink-0 text-text-muted" />
-      </div>
-
-      {/* Risultati */}
-      <div className="relative z-10 mt-3 flex w-[82%] flex-col gap-2">
-        {results.map((r, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-3 rounded-control bg-white p-2.5 shadow-showcase"
-          >
-            <div className="min-w-0 flex-1">
-              <p className="flex items-center gap-1 text-[9.5px] text-text-muted">
-                <NotebookLineIcon className="size-2.5" /> {r.category}
-              </p>
-              <p className="mt-0.5 truncate text-[12.5px] font-semibold">
-                {r.title}
-              </p>
-              <p className="truncate text-[10.5px] text-text-tertiary">
-                {r.snippet}
-              </p>
-            </div>
-            {r.thumb && (
-              <div className="relative size-11 shrink-0 overflow-hidden rounded-[7px]">
-                <Image
-                  src={r.thumb}
-                  alt={r.alt ?? ""}
-                  fill
-                  sizes="44px"
-                  className="object-cover"
-                />
+        <div className="flex w-full flex-col gap-2">
+          {results.map((r, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 rounded-control bg-white p-2.5 text-text-primary shadow-showcase"
+            >
+              <div className="min-w-0 flex-1">
+                <p className="flex items-center gap-1 text-[9.5px] text-text-muted">
+                  <NotebookLineIcon className="size-2.5 text-text-muted" />{" "}
+                  {r.category}
+                </p>
+                <p className="mt-0.5 truncate text-[12.5px] font-semibold text-text-primary">
+                  {r.title}
+                </p>
+                <p className="truncate text-[10.5px] text-text-tertiary">
+                  {r.snippet}
+                </p>
               </div>
-            )}
-          </div>
-        ))}
+              {r.thumb && (
+                <div className="relative size-11 shrink-0 overflow-hidden rounded-[7px]">
+                  <Image
+                    src={r.thumb}
+                    alt={r.alt ?? ""}
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Biglietto decorativo */}
-      <div className="absolute right-0 top-[22%] z-0 w-[36%] max-w-[170px] rotate-6 rounded-[10px] border border-stroke-cards bg-[#FDFBF7] p-3.5 shadow-showcase">
+      {/* Decorative ticket — only when the section is two columns (lg+) */}
+      <div className="absolute right-0 top-[16%] z-0 hidden w-[30%] max-w-[148px] rotate-6 rounded-[10px] border border-stroke-cards bg-[#FDFBF7] p-3 shadow-showcase lg:block">
         <p className="text-[10px] font-bold tracking-[0.06em] text-[#5B8DB8]">
           TORRE DE BELÉM
         </p>
         <p className="text-[7.5px] text-text-muted">LISBOA · PORTUGAL</p>
-        {/* Schizzo torre */}
         <svg
           viewBox="0 0 80 54"
           className="mt-2 w-full"
@@ -159,24 +181,12 @@ export default function SearchVisual() {
           />
         </svg>
         <div className="my-2 border-t border-dashed border-stroke-buttons/60" />
-        <div className="flex items-end justify-between">
-          <div className="text-[6.5px] leading-[1.5] text-text-muted">
+        <div className="flex items-end justify-between gap-2">
+          <div className="min-w-0 text-[6.5px] leading-[1.5] text-text-muted">
             <p className="font-semibold text-text-tertiary">GATE 15 NOV, 2024</p>
             <p>10:30 AM · nº 042</p>
           </div>
-          {/* QR stilizzato */}
-          <svg viewBox="0 0 24 24" className="size-8" aria-hidden>
-            <rect x="1" y="1" width="8" height="8" fill="#141414" />
-            <rect x="3" y="3" width="4" height="4" fill="#FDFBF7" />
-            <rect x="15" y="1" width="8" height="8" fill="#141414" />
-            <rect x="17" y="3" width="4" height="4" fill="#FDFBF7" />
-            <rect x="1" y="15" width="8" height="8" fill="#141414" />
-            <rect x="3" y="17" width="4" height="4" fill="#FDFBF7" />
-            <rect x="12" y="12" width="3" height="3" fill="#141414" />
-            <rect x="17" y="13" width="3" height="3" fill="#141414" />
-            <rect x="13" y="17" width="3" height="3" fill="#141414" />
-            <rect x="19" y="18" width="3" height="3" fill="#141414" />
-          </svg>
+          <QrMark className="size-8 shrink-0" />
         </div>
       </div>
     </div>

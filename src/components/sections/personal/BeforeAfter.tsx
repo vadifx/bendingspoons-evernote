@@ -1,3 +1,5 @@
+import BrandShape from "@/components/ui/BrandShape";
+
 const freeItems = [
   "Monthly upload limit (1 GB)",
   "One device synced",
@@ -55,53 +57,65 @@ function Check() {
 
 export default function BeforeAfter() {
   return (
-    <section className="px-5 py-12 md:py-16">
-      <div className="mx-auto max-w-[720px] text-center">
+    <section className="relative overflow-hidden px-5 py-12 md:py-16">
+      <div className="relative mx-auto max-w-[720px] text-center">
         <h2 className="heading-3 text-balance">Before and after Personal</h2>
         <p className="mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.55] text-text-secondary">
           Same second brain. Fewer stops.
         </p>
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-[960px] gap-5 md:grid-cols-2">
-        <div className="rounded-card border border-stroke-cards bg-white p-7 md:p-8">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-text-muted">
-            Free
-          </p>
-          <p className="mt-2 text-[22px] font-semibold tracking-[-0.02em]">
-            Where you are today
-          </p>
-          <ul className="mt-6 space-y-3.5">
-            {freeItems.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-[15px] text-text-tertiary"
-              >
-                <Cross />
-                {item}
-              </li>
-            ))}
-          </ul>
+      <div className="relative mx-auto mt-12 grid max-w-[960px] gap-5 md:grid-cols-2">
+        <div className="relative overflow-hidden rounded-card border border-stroke-cards bg-white p-7 md:p-8">
+          <BrandShape
+            name="circle"
+            className="pointer-events-none absolute -right-16 -top-16 size-48 text-stroke-buttons opacity-[0.2] md:-right-20 md:-top-20 md:size-56"
+          />
+          <div className="relative">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-text-muted">
+              Free
+            </p>
+            <p className="mt-2 text-[22px] font-semibold tracking-[-0.02em]">
+              Where you are today
+            </p>
+            <ul className="mt-6 space-y-3.5">
+              {freeItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-[15px] text-text-tertiary"
+                >
+                  <Cross />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="rounded-card border-2 border-brand-green bg-white p-7 shadow-showcase md:p-8">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-brand-green">
-            Personal
-          </p>
-          <p className="mt-2 text-[22px] font-semibold tracking-[-0.02em]">
-            Where you keep going
-          </p>
-          <ul className="mt-6 space-y-3.5">
-            {personalItems.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-[15px] text-text-primary"
-              >
-                <Check />
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="relative overflow-hidden rounded-card border-2 border-brand-green bg-white p-7 shadow-showcase md:p-8">
+          <BrandShape
+            name="flower"
+            className="pointer-events-none absolute -bottom-20 -right-20 size-56 text-brand-lime opacity-[0.22] md:-bottom-24 md:-right-24 md:size-64"
+          />
+          <div className="relative">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-brand-green">
+              Personal
+            </p>
+            <p className="mt-2 text-[22px] font-semibold tracking-[-0.02em]">
+              Where you keep going
+            </p>
+            <ul className="mt-6 space-y-3.5">
+              {personalItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-[15px] text-text-primary"
+                >
+                  <Check />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

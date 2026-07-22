@@ -10,107 +10,53 @@ import {
   YoutubeGlyph,
 } from "@/components/ui/icons";
 
-type Locale = "it" | "en";
-
-const columnsByLocale: Record<
-  Locale,
-  { title: string; links: string[] }[]
-> = {
-  it: [
-    {
-      title: "Prodotto",
-      links: [
-        "Perché Evernote",
-        "Note",
-        "Note di rilascio",
-        "Organizzazione",
-        "Produttività",
-        "Aziende",
-        "Studenti",
-        "Confronta le offerte",
-      ],
-    },
-    {
-      title: "Esplora",
-      links: [
-        "Funzionalità IA",
-        "Collaborazione",
-        "Web Clipper",
-        "Scanner documento",
-        "Attività",
-        "Calendario",
-        "Home",
-        "Ricerca",
-        "Mappa del sito",
-      ],
-    },
-    {
-      title: "Risorse",
-      links: [
-        "Modelli",
-        "Product updates",
-        "Sviluppatori",
-        "Blog",
-        "Assistenza e risorse",
-        "Forum",
-        "Contattaci",
-        "Riguardo Bending Spoons",
-        "Opportunità di lavoro",
-      ],
-    },
-    {
-      title: "Inizia qui",
-      links: ["Iscriviti gratuitamente", "Accedi", "Scarica"],
-    },
-  ],
-  en: [
-    {
-      title: "Product",
-      links: [
-        "Why Evernote",
-        "Notes",
-        "Release notes",
-        "Organization",
-        "Productivity",
-        "Business",
-        "Students",
-        "Compare plans",
-      ],
-    },
-    {
-      title: "Explore",
-      links: [
-        "AI Features",
-        "Collaboration",
-        "Web Clipper",
-        "Document Scanner",
-        "Tasks",
-        "Calendar",
-        "Home",
-        "Search",
-        "Sitemap",
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        "Templates",
-        "Product updates",
-        "Developers",
-        "Blog",
-        "Help & support",
-        "Forum",
-        "Contact us",
-        "About Bending Spoons",
-        "Careers",
-      ],
-    },
-    {
-      title: "Get started",
-      links: ["Sign up for free", "Log in", "Download"],
-    },
-  ],
-};
+const columns = [
+  {
+    title: "Product",
+    links: [
+      "Why Evernote",
+      "Notes",
+      "Release notes",
+      "Organization",
+      "Productivity",
+      "Business",
+      "Students",
+      "Compare plans",
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      "AI Features",
+      "Collaboration",
+      "Web Clipper",
+      "Document Scanner",
+      "Tasks",
+      "Calendar",
+      "Home",
+      "Search",
+      "Sitemap",
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      "Templates",
+      "Product updates",
+      "Developers",
+      "Blog",
+      "Help & support",
+      "Forum",
+      "Contact us",
+      "About Bending Spoons",
+      "Careers",
+    ],
+  },
+  {
+    title: "Get started",
+    links: ["Sign up for free", "Log in", "Download"],
+  },
+];
 
 const socials = [
   { label: "Facebook", icon: FacebookGlyph },
@@ -120,9 +66,7 @@ const socials = [
   { label: "YouTube", icon: YoutubeGlyph },
 ];
 
-export default function Footer({ locale = "it" }: { locale?: Locale }) {
-  const columns = columnsByLocale[locale];
-
+export default function Footer() {
   return (
     <footer className="bg-bg-primary pb-10 pt-16 lg:pt-24">
       <Container>
@@ -131,9 +75,7 @@ export default function Footer({ locale = "it" }: { locale?: Locale }) {
           <button className="flex cursor-pointer items-center gap-2 text-[14px] text-text-primary">
             <GlobeIcon className="size-4 text-text-tertiary" />
             <span className="text-text-tertiary">Language:</span>
-            <span className="font-medium">
-              {locale === "en" ? "English" : "Italiano"}
-            </span>
+            <span className="font-medium">English</span>
             <ChevronDown className="size-3" />
           </button>
           <div className="ml-auto flex items-center gap-5">
@@ -173,21 +115,16 @@ export default function Footer({ locale = "it" }: { locale?: Locale }) {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-stroke-cards pt-6 text-[13px] text-text-tertiary md:flex-row md:items-center">
-          <p>
-            © 2026 Bending Spoons US Inc.{" "}
-            {locale === "en"
-              ? "All rights reserved."
-              : "Tutti i diritti riservati."}
-          </p>
+          <p>© 2026 Bending Spoons US Inc. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:ml-auto">
             <a href="#" className="hover:text-text-primary">
-              {locale === "en" ? "Cookie settings" : "Impostazioni dei cookie"}
+              Cookie settings
             </a>
             <a href="#" className="hover:text-text-primary">
-              {locale === "en" ? "Security" : "Sicurezza"}
+              Security
             </a>
             <a href="#" className="hover:text-text-primary">
-              {locale === "en" ? "Legal" : "Note legali"}
+              Legal
             </a>
             <a href="#" className="hover:text-text-primary">
               Privacy

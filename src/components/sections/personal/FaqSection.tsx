@@ -10,15 +10,15 @@ const faqs = [
   },
   {
     q: "What happens if I stay on Free?",
-    a: "Your notes remain safe. You keep using Evernote with Free limits — 1 synced device, 1 GB upload per month, and without offline access or AI-powered search.",
+    a: "Your notes remain safe. You keep using Evernote with Free limits: 1 synced device, 1 GB upload per month, and no offline access or AI-powered search.",
   },
   {
     q: "Can I go back to Free later?",
     a: "Yes. Your notes stay in your account. Paid features pause if you return to Free, and Free limits apply again.",
   },
   {
-    q: "Is Personal right for me, or Professional?",
-    a: "Personal is for individuals: unlimited devices, offline, AI search, PDF annotation, and full tasks. Professional is for teams that need collaboration and admin tools.",
+    q: "What do I get with Personal that Free doesn’t have?",
+    a: "Unlimited devices, offline access, AI-powered search, PDF annotation, full tasks and reminders, 100 GB of monthly uploads, and notes up to 200 MB.",
   },
 ];
 
@@ -27,7 +27,7 @@ export default function FaqSection() {
 
   return (
     <section className="px-5 py-12 md:py-20">
-      <div className="mx-auto max-w-[720px]">
+      <div className="mx-auto max-w-[1000px]">
         <h2 className="heading-3 text-center text-balance">Questions</h2>
         <p className="mx-auto mt-4 max-w-[440px] text-center text-[16px] text-text-secondary">
           Straight answers before you decide.

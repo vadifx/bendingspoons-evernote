@@ -5,7 +5,7 @@ export default function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Evernote — home"
+      aria-label="Evernote home"
       className={`inline-flex items-center ${className}`}
     >
       <Image

@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import BrandShape from "@/components/ui/BrandShape";
 
 type Cell =
   | { type: "text"; value: string }
@@ -9,7 +10,6 @@ type Row = {
   feature: string;
   free: Cell;
   personal: Cell;
-  professional: Cell;
 };
 
 const rows: Row[] = [
@@ -17,55 +17,36 @@ const rows: Row[] = [
     feature: "Devices synced",
     free: { type: "text", value: "1" },
     personal: { type: "text", value: "Unlimited" },
-    professional: { type: "text", value: "Unlimited" },
   },
   {
     feature: "Monthly upload limit",
     free: { type: "text", value: "1 GB" },
     personal: { type: "text", value: "100 GB" },
-    professional: { type: "text", value: "2 TB" },
   },
   {
     feature: "Note size limit",
     free: { type: "text", value: "25 MB" },
     personal: { type: "text", value: "200 MB" },
-    professional: { type: "text", value: "500 MB" },
   },
   {
     feature: "Offline access",
     free: { type: "cross" },
     personal: { type: "check" },
-    professional: { type: "check" },
   },
   {
     feature: "AI-powered search",
     free: { type: "cross" },
     personal: { type: "check" },
-    professional: { type: "check" },
   },
   {
     feature: "PDF annotation",
     free: { type: "cross" },
     personal: { type: "check" },
-    professional: { type: "check" },
   },
   {
     feature: "Tasks & reminders",
     free: { type: "text", value: "Limited" },
     personal: { type: "text", value: "Full" },
-    professional: { type: "text", value: "Full" },
-  },
-  {
-    feature: "Team collaboration",
-    free: { type: "cross" },
-    personal: { type: "cross" },
-    professional: { type: "check" },
-  },
-  {
-    feature: "Admin & user management",
-    free: { type: "cross" },
-    personal: { type: "cross" },
-    professional: { type: "check" },
   },
 ];
 
@@ -122,23 +103,27 @@ function CellView({ cell, emphasize }: { cell: Cell; emphasize?: boolean }) {
 
 export default function PlanTable() {
   return (
-    <section id="compare" className="scroll-mt-24 px-5 py-12 md:py-20">
-      <div id="upgrade" className="mx-auto max-w-[720px] scroll-mt-28 text-center">
-        <h2 className="heading-3 text-balance">Compare plans</h2>
+    <section id="compare" className="relative scroll-mt-24 overflow-hidden px-5 py-12 md:py-20">
+      <BrandShape
+        name="star"
+        className="pointer-events-none absolute -right-10 bottom-16 size-32 text-accent-purple opacity-[0.12] md:-right-12 md:size-40"
+      />
+
+      <div id="upgrade" className="relative mx-auto max-w-[720px] scroll-mt-28 text-center">
+        <h2 className="heading-3 text-balance">Free vs Personal</h2>
         <p className="mx-auto mt-4 max-w-[480px] text-[16px] leading-[1.55] text-text-secondary">
-          Everything that affects your decision — no surprises. Personal is
-          built for individuals; Professional is for teams.
+          Side by side, everything that changes when you unlock Personal.
         </p>
       </div>
 
-      <div className="mx-auto mt-14 hidden max-w-[1000px] rounded-card border border-stroke-cards bg-white shadow-showcase animate-fade-up md:block">
-        <div className="grid grid-cols-[1.2fr_1fr_1.1fr_1fr] border-b border-stroke-cards">
+      <div className="mx-auto mt-14 hidden max-w-[800px] rounded-card border border-stroke-cards bg-white shadow-showcase animate-fade-up md:block">
+        <div className="grid grid-cols-[1.4fr_1fr_1.15fr] border-b border-stroke-cards">
           <div className="p-5" />
           <div className="border-l border-stroke-cards p-5 text-center">
             <p className="text-[15px] font-semibold">Free</p>
             <p className="mt-2 text-[22px] font-semibold">Free</p>
           </div>
-          <div className="relative border-l-2 border-brand-green bg-[#F0FDF4]/15 p-5 text-center">
+          <div className="relative border-l border-stroke-cards bg-[#F0FDF4]/15 p-5 text-center">
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-pill bg-brand-green px-3 py-0.5 text-[11px] font-semibold text-white">
               Recommended
             </span>
@@ -148,21 +133,12 @@ export default function PlanTable() {
               Less than two coffees
             </p>
           </div>
-          <div className="border-l border-stroke-cards p-5 text-center">
-            <p className="text-[15px] font-semibold">Professional</p>
-            <p className="mt-2 text-[18px] font-semibold leading-tight">
-              €14.99
-              <span className="block text-[12px] font-normal text-text-muted">
-                /mo/seat
-              </span>
-            </p>
-          </div>
         </div>
 
         {rows.map((row, i) => (
           <div
             key={row.feature}
-            className={`grid grid-cols-[1.2fr_1fr_1.1fr_1fr] ${
+            className={`grid grid-cols-[1.4fr_1fr_1.15fr] ${
               i < rows.length - 1 ? "border-b border-stroke-cards" : ""
             } ${i % 2 === 1 ? "bg-bg-primary/50" : ""}`}
           >
@@ -172,40 +148,23 @@ export default function PlanTable() {
             <div className="flex items-center justify-center border-l border-stroke-cards px-3 py-3.5">
               <CellView cell={row.free} />
             </div>
-            <div className="flex items-center justify-center border-l-2 border-brand-green bg-[#F0FDF4]/15 px-3 py-3.5">
+            <div className="flex items-center justify-center border-l border-stroke-cards bg-[#F0FDF4]/15 px-3 py-3.5">
               <CellView cell={row.personal} emphasize />
-            </div>
-            <div className="flex items-center justify-center border-l border-stroke-cards px-3 py-3.5">
-              <CellView cell={row.professional} />
             </div>
           </div>
         ))}
 
-        <div className="grid grid-cols-[1.2fr_1fr_1.1fr_1fr] border-t border-stroke-cards">
+        <div className="grid grid-cols-[1.4fr_1fr_1.15fr] border-t border-stroke-cards">
           <div className="p-5" />
-          <div className="flex items-center justify-center border-l border-stroke-cards p-5">
+          <div className="border-l border-stroke-cards p-5" />
+          <div className="flex items-center justify-center border-l border-stroke-cards bg-[#F0FDF4]/15 p-5">
             <Button
-              variant="outline"
+              variant="green"
               size="md"
               href="#"
-              className="w-full max-w-[160px]"
+              className="w-full max-w-[200px]"
             >
-              Stay on Free
-            </Button>
-          </div>
-          <div className="flex items-center justify-center border-l-2 border-brand-green bg-[#F0FDF4]/15 p-5">
-            <Button variant="primary" size="md" href="#" className="w-full max-w-[200px]">
               Unlock everything
-            </Button>
-          </div>
-          <div className="flex items-center justify-center border-l border-stroke-cards p-5">
-            <Button
-              variant="outline"
-              size="md"
-              href="#"
-              className="w-full max-w-[160px]"
-            >
-              Professional
             </Button>
           </div>
         </div>
@@ -215,18 +174,17 @@ export default function PlanTable() {
       <div className="mx-auto mt-10 flex max-w-[400px] flex-col gap-4 md:hidden">
         {(
           [
-            { name: "Free", price: "Free", highlight: false, key: "free" as const },
+            {
+              name: "Free",
+              price: "Free",
+              highlight: false,
+              key: "free" as const,
+            },
             {
               name: "Personal",
               price: "€7.99/mo",
               highlight: true,
               key: "personal" as const,
-            },
-            {
-              name: "Professional",
-              price: "€14.99/mo/seat",
-              highlight: false,
-              key: "professional" as const,
             },
           ] as const
         ).map((plan) => (
@@ -256,20 +214,13 @@ export default function PlanTable() {
                 </li>
               ))}
             </ul>
-            <div className="mt-5">
-              <Button
-                variant={plan.highlight ? "primary" : "outline"}
-                size="md"
-                href="#"
-                className="w-full"
-              >
-                {plan.highlight
-                  ? "Unlock everything"
-                  : plan.name === "Free"
-                    ? "Stay on Free"
-                    : "Professional"}
-              </Button>
-            </div>
+            {plan.highlight && (
+              <div className="mt-5">
+                <Button variant="green" size="md" href="#" className="w-full">
+                  Unlock everything
+                </Button>
+              </div>
+            )}
           </div>
         ))}
       </div>

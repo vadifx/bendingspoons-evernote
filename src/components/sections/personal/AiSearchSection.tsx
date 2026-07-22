@@ -1,9 +1,10 @@
 import Button from "@/components/ui/Button";
+import BrandShape from "@/components/ui/BrandShape";
 import SearchVisual from "@/components/visuals/SearchVisual";
 import { SparkleIcon } from "@/components/ui/icons";
 
 const points = [
-  "Ask in your own words — no exact titles needed",
+  "Ask in your own words, with no exact titles needed",
   "Surfaces the right note among thousands, in seconds",
   "Gets more useful as your archive grows",
 ];
@@ -11,13 +12,13 @@ const points = [
 export default function AiSearchSection() {
   return (
     <section className="relative overflow-hidden border-y border-black bg-bg-dark py-16 text-white md:py-24">
-      {/* Gradient blobs (design system §8.8) */}
+      {/* Gradient blobs — left lime matches button, right purple accent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-50 blur-[100px]"
+        className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-45 blur-[100px]"
         style={{
           background:
-            "radial-gradient(closest-side, #4dc869 0%, #5bb4d0 65%, transparent 100%)",
+            "radial-gradient(closest-side, #94e130 0%, #94e13088 45%, transparent 100%)",
         }}
       />
       <div
@@ -27,6 +28,15 @@ export default function AiSearchSection() {
           background:
             "radial-gradient(closest-side, #7c8eff 0%, #d9b6fd 60%, transparent 100%)",
         }}
+      />
+
+      <BrandShape
+        name="star"
+        className="pointer-events-none absolute -right-48 -top-28 hidden size-[26rem] text-accent-purple opacity-[0.16] lg:block"
+      />
+      <BrandShape
+        name="cross"
+        className="pointer-events-none absolute -bottom-40 -left-44 hidden size-[24rem] rotate-12 text-brand-lime opacity-[0.14] lg:block"
       />
 
       <div className="relative mx-auto grid max-w-[1180px] items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
@@ -39,7 +49,7 @@ export default function AiSearchSection() {
           </h2>
           <p className="mt-5 text-[16px] leading-[1.6] text-white/85">
             AI-powered search doesn&apos;t just match keywords. It understands
-            what you&apos;re looking for and brings back the right note — even
+            what you&apos;re looking for and brings back the right note, even
             when you only remember a detail.
           </p>
 
@@ -73,7 +83,7 @@ export default function AiSearchSection() {
             </Button>
           </div>
           <p className="mt-4 text-[13px] text-white/60">
-            Included in Personal and Professional — not available on Free.
+            Included in Personal. Not available on Free.
           </p>
         </div>
 
